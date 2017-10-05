@@ -1,0 +1,107 @@
+package negocio;
+
+public class Carro {
+    private String placa;
+    private Strign modelo;
+    private String fabricante;
+    private int renavam;
+    private int anoFabricacao;
+    private int anoModelo;
+
+    public Carro(String placa, String modelo, String fabricante, int renavam, int anoFabricacao, int anoModelo) {
+      this.placa = placa;
+      this.modelo = modelo;
+      this.fabricante = fabricante;
+      this.renavam = renavam;
+      this.anoFabricacao = anoFabricacao;
+      this.anoModelo = anoModelo;
+    }
+    
+    /**
+     * @return the titulo
+     */
+    public String getPlaca() {
+        return placa;
+    }
+
+    /**
+     * @param placa
+     */
+    public void setPlaca (String placa) {
+        this.placa = placa;
+    }
+
+    /**
+     * @return 
+     */
+    public String getModelo() {
+        return modelo;
+    }
+
+    /**
+     * @param modelo
+     */
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    /**
+     * @return the edicao
+     */
+    public String getFabricante() {
+        return fabricante;
+    }
+
+    /**
+     * @param fabricante
+     */
+    public void setFabricante(String fabricante) {
+        this.fabricante = fabricante;
+    }
+
+    /**
+     * @return the anoPublicacao
+     */
+    public int getRenavam() {
+        return renavam;
+    }
+
+    /**
+     * @param renavam
+     */
+    public void setRenavam(int renavam) {
+        this.renavam = renavam;
+    }
+
+    /**
+     * @return the editora
+     */
+    public int getAnoFabricacao() {
+        return anoFabricacao;
+    }
+
+    /**
+     * @param anoFabricacao
+     */
+    public void setAnoFabricacao(int anoFabricacao) {
+        this.anoFabricacao = anoFabricacao;
+    }
+
+    /**
+     * @return the numeroPaginas
+     */
+    public int getAnoModelo() {
+        return anoModelo;
+    }
+
+    /**
+     * @param anoModelo
+     */
+    public void setAnoModelo(int anoModelo) {
+        this.anoModelo = anoModelo;
+    }
+}
+
+ 
+
+
