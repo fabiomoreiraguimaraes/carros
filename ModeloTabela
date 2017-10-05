@@ -1,0 +1,107 @@
+package ui;
+
+import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+import javax.swing.table.AbstractTableModel;
+import negocio.ListaCarros;
+import negocio.Carro;
+
+
+/**
+ *
+ * @author Andre
+ */
+public class ModeloTabelaCarros extends AbstractTableModel
+        implements Observer {
+
+    private ListaCarros colecaoCarros;
+    private String[] nomeColunas;
+    
+    public ModeloTabelaCarros(ListaCarros colecaoCarros) {
+        this.nomeColunas = new String[]{"Placa", "Modelo", "Fabricante", "Ano de Fabricação"};
+        this.colecaoCarros = colecaoCarros;
+        
+        this.colecaoCarros.addObserver(this);
+    }
+    
+    @Override
+    public int getRowCount() {
+        return colecaoCarros.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return this.nomeColunas.length;
+    }
+    
+    @Override
+    public String getColumnName(int columnIndex) {
+        return this.nomeColunas[columnIndex];
+    }
+    
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        //Obtem o livro que está na posição respectiva a linha a ser exibida
+        Carro carros = colecaoCarros.get(rowIndex);
+        
+        //Obtem o atributo do livro na respectiva coluna solicitada
+        switch(columnIndex) {
+            case 0:
+                return carros.getPlaca();
+            case 1:
+                return carros.getModelo();
+            case 2:
+                return carros.getFabricante();
+            case 3:
+                return carros.getAnoFabricacao();
+            default:
+                return "Erro";
+        }
+    }
+    
+    @Override
+    public void setValueAt(Object value, int rowIndex, int columnIndex) {
+        //Obtem o livro que está na posição respectiva a linha que foi modificada
+        Carro carros = colecaoCarros.get(rowIndex);
+        
+        //Obtem o atributo do livro na respectiva coluna solicitada
+        switch(columnIndex) {
+            case 3:
+                Integer anoFabricacao = (Integer) value;
+                carros.setAnoFabricacao(anoFabricacao);
+                break;
+            default:
+        }
+    }
+    
+    @Override
+    public boolean isCellEditable(int rowIndex, int columnIndex) {
+        //somente permite que as colunas 1 e 3, respectivamente, edicao e ano
+        //sejam alteradas
+        return columnIndex == 1 || columnIndex == 3;
+    }
+    
+    @Override
+    public Class getColumnClass(int columnIndex) {
+        //Obtem o tipo do atributo do livro na respectiva coluna solicitada
+        switch(columnIndex) {
+            case 0:
+                return String.class;
+            case 1:
+                return String.class;
+            case 2:
+                return String.class;
+            case 3:
+                return Integer.class;
+            default:
+                return String.class;
+        }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.fireTableDataChanged();
+    }
+}
