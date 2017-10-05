@@ -1,0 +1,103 @@
+package ui;
+
+import java.util.List;
+import javax.swing.table.TableModel;
+import negocio.ListaCarros;
+import negocio.Carro;
+
+/**
+ *
+ * @author Andre
+ */
+public class FrameVisualizarCarrosCadastrados extends javax.swing.JFrame {
+    private ListaCarros colecaoCarros;
+    
+    /**
+     * Creates new form JFrameLivrosCadastrados
+     */
+    public FrameVisualizarCarrosCadastrados(ListaCarros colecaoCarros) {
+        initComponents();
+        this.colecaoCarros = colecaoCarros;
+        
+        //Cria um objeto modelo para a tabela
+        TableModel modelo = new ModeloTabelaCarros(colecaoCarros);
+        //Associa o modelo a tabela
+        tbTabelaCarros.setModel(modelo);  
+    }
+
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    private void initComponents() {
+
+        lbCarrosCadastrados = new javax.swing.JLabel();
+        spTabelaCarros = new javax.swing.JScrollPane();
+        tbTabelaCarros = new javax.swing.JTable();
+        btAtualizar = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lbCarrosCadastrados.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lbCarrosCadastrados.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbCarrosCadastrados.setText("Carros Cadastrados");
+
+        tbTabelaCarros.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        spTabelaCarros.setViewportView(tbTabelaCarros);
+
+        btAtualizar.setText("Atualizar");
+        btAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAtualizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbCarrosCadastrados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(spTabelaCarros, javax.swing.GroupLayout.DEFAULT_SIZE, 858, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btAtualizar)))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbCarrosCadastrados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(spTabelaCarros, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btAtualizar)
+                .addContainerGap())
+        );
+
+        pack();
+    }// </editor-fold>                        
+
+    private void btAtualizarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+
+    }                                           
+
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton btAtualizar;
+    private javax.swing.JLabel lbCarrosCadastrados;
+    private javax.swing.JScrollPane spTabelaCarros;
+    private javax.swing.JTable tbTabelaCarros;
+    // End of variables declaration                   
+}
