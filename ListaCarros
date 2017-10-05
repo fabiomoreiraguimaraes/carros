@@ -1,0 +1,24 @@
+package negocio;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+
+public class ListaCarros extends Observable {
+    private List<Carro> carros = new ArrayList<Carro>();
+    
+    public int size() {
+        return carros.size();
+    }
+    
+    public Carro get(int index) {
+        return carros.get(index);
+    }
+    
+    public void add(Carro carro){
+        carros.add(carro);
+        //notifica os observadores que houve mudanças
+        this.setChanged();
+        this.notifyObservers();
+    }
+}
